@@ -1,5 +1,5 @@
 baseURL = "http://zualex.com/"
-publishDir = "docs"
+publishDir = "public"
 languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "Aleksandr Zubarev"
