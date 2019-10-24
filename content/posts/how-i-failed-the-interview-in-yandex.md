@@ -1,7 +1,7 @@
 ---
 title: "Как я не попал в Яндекс"
 date: 2019-06-26T20:41:57+03:00
-draft: true
+draft: false
 toc: false
 images:
 tags: 

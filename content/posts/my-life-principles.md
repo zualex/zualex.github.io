@@ -1,7 +1,7 @@
 ---
 title: "Мои жизненные принципы"
 date: 2019-08-15T19:12:42+03:00
-draft: true
+draft: false
 toc: false
 images:
 tags: 
