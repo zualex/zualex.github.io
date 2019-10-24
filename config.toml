@@ -56,16 +56,16 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   # Social Icons
   # Check https://github.com/Track3/hermit#social-icons for more info.
   [[params.social]]
-    name = "twitter"
-    url = "https://twitter.com/"
-
-  [[params.social]]
-    name = "instagram"
-    url = "https://instagram.com/"
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/zualex"
 
   [[params.social]]
     name = "github"
-    url = "https://github.com/"
+    url = "https://github.com/zualex"
+
+  [[params.social]]
+    name = "telegram"
+    url = "https://telegram.me/zualex"
 
 [menu]
 
@@ -78,3 +78,8 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     name = "About"
     url = "about/"
     weight = 20
+
+  [[menu.main]]
+    name = "CV"
+    url = "Aleksandr_Zubarev_CV.pdf"
+    weight = 30
