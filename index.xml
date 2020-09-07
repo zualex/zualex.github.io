@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 24 Oct 2019 16:51:21 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2020 09:00:00 +0300</lastBuildDate>
     
 	<atom:link href="http://zualex.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Из тимлида в разработчики</title>
+      <link>http://zualex.com/posts/team-leader-to-developer/</link>
+      <pubDate>Mon, 07 Sep 2020 09:00:00 +0300</pubDate>
+      
+      <guid>http://zualex.com/posts/team-leader-to-developer/</guid>
+      <description>Предыстория Начну с того, как я стал тимлидом.
+Откликнулся на вакансию разработчика, пригласили на собеседование. Собеседование было обычное, ничем не отличающееся от других моих собеседований, но в конце начали задавать вопросы связанные с управлением командой. На все эти вопросы отвечал по интуиции, что то мог ответить исходя из опыта.
+В итоге собеседование прошел успешно и получил оффер на роль старшего разработчика, но после 3-х месяцев испытательного срока моя роль превращается в тимлида.</description>
+    </item>
     
     <item>
       <title>Aleksandr Zubarev</title>
@@ -19,12 +30,8 @@
       
       <guid>http://zualex.com/about/</guid>
       <description>Senior Software Engineer – Drimsim Experienced PHP Developer
- 7+ years in Software Development and 7+ years in PHP.
- 2+ years in Agile Development – developing software using Scrum methodology.
- Test-driven development (TDD), Refactoring, Continuous Integration.
- Languages: PHP, Python, Javascript, SQL, HTML5/CSS3
- Frameworks: Laravel, Yii, Symfony, Zend Framework, React
- Others: Docker, Vagrant, Git, MySQL, PostgreSQL, Redis   Senior Software Engineer at Drimsim, Barcelona, Spain Sep 2018 — Present</description>
+ 7+ years in Software Development and 7+ years in PHP. 2+ years in Agile Development – developing software using Scrum methodology. Test-driven development (TDD), Refactoring, Continuous Integration. Languages: PHP, Python, Javascript, SQL, HTML5/CSS3 Frameworks: Laravel, Yii, Symfony, Zend Framework, React Others: Docker, Vagrant, Git, MySQL, PostgreSQL, Redis   Senior Software Engineer at Drimsim, Barcelona, Spain Sep 2018 — Present
+Drimsim - universal SIM card for traveling around the world.</description>
     </item>
     
     <item>
