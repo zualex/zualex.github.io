@@ -1,5 +1,7 @@
 # Personal site
 
+https://gohugo.io/hosting-and-deployment/hosting-on-github/g
+
 ```
 hugo
 cd public && git add --all && git commit -m "Generate site" && cd ..
