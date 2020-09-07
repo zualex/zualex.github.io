@@ -1,6 +1,6 @@
 # Personal site
 
-https://gohugo.io/hosting-and-deployment/hosting-on-github/g
+https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
 ```
 hugo
