@@ -1,16 +1,14 @@
 ---
 title: "PHP производительность array_merge в цикле"
 date: 2021-03-24T11:47:29+03:00
-draft: true
+draft: false
 toc: false
 images:
 tags: 
   - php
 ---
 
-# PHP производительность array_merge в цикле
-
-Если использовать array_merge в цикле, то phpStrom + плагин [Php Inspections (EA Extended)](https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-)) даёт подсказку: `[EA] 'array_merge(...)' is used in a loop and is a resources greedy construction.` Стало интересно, насколько печально использовать array_merge в цикле и какие имеются альтернативные решения.
+Если использовать array_merge в цикле, то phpStrom + плагин [Php Inspections (EA Extended)](https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-) даёт подсказку: `[EA] 'array_merge(...)' is used in a loop and is a resources greedy construction.` Стало интересно, насколько  сильно влияет на произовдительность использование array_merge в цикле и какие есть альтернативные решения.
 
 Рассмотрим пример. Имеется список товаров следующей структуры:
 ```
@@ -20,8 +18,9 @@ $products = [
 ];
 ```
 
-Требуется перебрать список товаров и получить список всех тегов.
-При тестировании производительности проверял работоспособность скрипта при количестве в 10, 250, 500, 1000, 2000, 5000, 10000, 50000 товаров, и также экспериментировал с количеством тегов внутри каждого товара: 1, 3, 6 тегов.
+Нужно получить список всех тегов.
+
+В экспериментах решил проверить скорость скрипта при количестве в 10, 250, 500, 1000, 2000, 5000, 10000, 50000 товаров, и также изменять количество тегов внутри каждого товара: 1, 3, 6 тегов.
 
 ## Объединение массивов
 Выделил следующие способы объединить два и более массивов в один:
@@ -31,9 +30,9 @@ $products = [
 - array_replace
 - foreach
 
-Рассмотрим каждый из подходов с примерами кода
+Рассмотрим каждый из способов с примерами кода.
 
-### Использование array_merge
+#### Использование array_merge
 ```
 $tags = [];
 foreach($products as $product) {
@@ -42,7 +41,7 @@ foreach($products as $product) {
 ```
 https://3v4l.org/gRJQi
 
-### Распаковка массива через оператор ...
+#### Распаковка массива через оператор ...
 ```
 $tags = [];
 foreach($products as $product) {
@@ -52,7 +51,7 @@ $tags = array_merge(...$tags);
 ```
 https://3v4l.org/DvAEF
 
-### Использование оператора +
+#### Использование оператора +
 При использовании оператора + если совпадают индексы, то в результирующем массиве будут только элементы из массива слева от оператора. Чтобы этого избежать потребуется переделать структуру хранения товаров, чтобы в списке тегов был уникальный индекс.
 
 ```
@@ -68,7 +67,7 @@ foreach($products as $product) {
 ```
 https://3v4l.org/JUGjB
 
-### Использование array_replace
+#### Использование array_replace
 В данном примере тоже потребуется использовать структуру хранения товаров, как при использовании оператора +.
 
 ```
@@ -79,7 +78,7 @@ foreach($products as $product) {
 ```
 https://3v4l.org/FgcBl
 
-### Использование foreach
+#### Использование foreach
 ```
 $tags = [];
 foreach($products as $product) {
@@ -91,7 +90,7 @@ foreach($products as $product) {
 https://3v4l.org/9NADo
 
 ## Анализ производительности
-Результаты прогонов имеются в этой таблице: https://docs.google.com/spreadsheets/d/1Va7pg5iaPbXMxkbcQ5sOTco0d316IUzLCOcHq1CrzRo/edit?usp=sharing
+Результаты прогонов в этой таблице: https://docs.google.com/spreadsheets/d/1Va7pg5iaPbXMxkbcQ5sOTco0d316IUzLCOcHq1CrzRo/edit?usp=sharing
 
 Эксперименты показали, что для PHP 8.0 и 7.4 нет существенной разницы между версиями. Из-за этого примеры будут для PHP 7.4.
 
@@ -108,7 +107,7 @@ https://3v4l.org/9NADo
 
  `array_merge`, `array_replace` - видна квадратичная зависимость. В экспериментах данные имеются только для 10000.
  
- ### Сравнив вместе
+ ### Сравним вместе
  Теперь попробуем совместить графики, чтобы увидеть общую картину. Сравнивать буду для PHP 7.4 с использованием 3-х тегов.
  
 График для кол-во от 10 до 500 товаров.
@@ -137,31 +136,31 @@ $big2 = array_fill(100000, 100000, 'string');
 $big3 = range(200000, 100000);
 ```
 
-### Пример 1 - array_merge
+#### Без цикла array_merge
 ```
 $result = array_merge($big1, $big2, $big3);
 ```
 https://3v4l.org/grFZ5
 
-### Пример 2 - Распаковка массива через оператор ...
+#### Без цикла Распаковка массива через оператор ...
 ```
 $result = [...$big1, ...$big2, ...$big3];
 ```
 https://3v4l.org/ZoTUF
 
-### Пример 3 - +
+#### Без цикла оператор +
 ```
 $result = $big1 + $big2 + $big3;
 ```
 https://3v4l.org/jK4Pk
 
-### Пример 4 - array_replace
+#### Без цикла array_replace
 ```
 $result = array_replace($big1, $big2, $big3);
 ```
 https://3v4l.org/UIjh9
 
-### Пример 5 - foreach
+#### Без цикла foreach
 ```
 $result = [];
 foreach ($big1 as $key => $value) {
@@ -190,18 +189,7 @@ https://3v4l.org/bWGUK
 
 Но если стоит задача объединить массивы, когда нет циклов, то лучше использовать `array_merge`.
  
- ## История ClassMapAutoloader
-В классе [Zend\Loader\ClassMapAutoloader](https://github.com/zendframework/zend-loader/blob/master/src/ClassMapAutoloader.php#L92) есть массив для хранения списка классов для подгрузки, чтобы избегать лишних обращений к файловой системе. Раньше при добавлении нового класса в список использовалась функция array_merge:
-```
-$this->map = array_merge($this->map, $map);
-```
 
-Но потом возникло [обсуждение](https://github.com/zendframework/zendframework/issues/5716), в ходе которого начали замерять производительность этого подхода и в итоге решили, что использовать оператор `+` будет более лучшее решение:
-```
-$this->map = $map + $this->map;
-```
- 
- 
  ## Ресурсы:
  - [Разница между array_merge и + (оператор плюс) в PHP](http://langtoday.com/?p=393)
  - [[PHP 7] Merging arrays with array_merge() and spread syntax](https://www.kindacode.com/article/merging-arrays-in-php-7/)
@@ -209,7 +197,3 @@ $this->map = $map + $this->map;
 - [Zendframework Issues #5716: Zend\Loader\ClassMapAutoloader - Performance improvement](https://github.com/zendframework/zendframework/issues/5716)
 - [Исходный код array_merge: php-src/ext/array.c -> PHPAPI int php_array_merge](https://github.com/php/php-src/blob/master/ext/standard/array.c#L3544)
 
-___
-Date: 2021-02-16 15:02
-Tags: #массив #производительность #минипост 
-Links: [[017 PHP|php]]
