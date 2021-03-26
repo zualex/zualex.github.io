@@ -94,16 +94,16 @@ https://gist.github.com/zualex/0d101fb8b48701352117cfc253be2762
 
 Эксперименты показали, что для PHP 8.0 и 7.4 нет существенной разницы между версиями. Из-за этого примеры будут для PHP 7.4.
 
-![График PHP 7.4 ...](/static/php-array_merge/PHP_7.4_....png)
+![График PHP 7.4 ...](/php-array_merge/PHP_7.4_....png)
 Для 6 тегов нет расчетов из-за memory limit во время прогона тестов.
 
-![График PHP 7.4 +](/static/php-array_merge/PHP_7.4_+.png)
-![График PHP 7.4 foreach](/static/php-array_merge/PHP_7.4_foreach.png)
+![График PHP 7.4 +](/php-array_merge/PHP_7.4_+.png)
+![График PHP 7.4 foreach](/php-array_merge/PHP_7.4_foreach.png)
 
 Как видно из графиков, `...`, `+`, `foreach` имеют линейную зависимость.
 
-![График PHP 7.4 array_merge](/static/php-array_merge/PHP_7.4_array_merge.png)
-![График PHP 7.4 array_replace](/static/php-array_merge/PHP_7.4_array_replace.png)
+![График PHP 7.4 array_merge](/php-array_merge/PHP_7.4_array_merge.png)
+![График PHP 7.4 array_replace](/php-array_merge/PHP_7.4_array_replace.png)
 
  `array_merge`, `array_replace` - видна квадратичная зависимость. В экспериментах данные имеются только для 10000.
  
@@ -111,20 +111,20 @@ https://gist.github.com/zualex/0d101fb8b48701352117cfc253be2762
  Теперь попробуем совместить графики, чтобы увидеть общую картину. Сравнивать буду для PHP 7.4 с использованием 3-х тегов.
  
 График для кол-во от 10 до 500 товаров.
-![График PHP 7.4 всё вместе от 10 до 500 товаров](/static/php-array_merge/PHP_7.4_10_500.png)
+![График PHP 7.4 всё вместе от 10 до 500 товаров](/php-array_merge/PHP_7.4_10_500.png)
 
 Как видно, уже начиная от 250, а может и ранее (в экспериментах делал тесты для 10, 250, 500 товаров), `array_merge` и `array_replace` отрабатывают дольше всех.
 
 Теперь если посмотреть для 50000 товаров.
-![График PHP 7.4 всё вместе от 10 до 50000 товаров](/static/php-array_merge/PHP_7.4_10_50000.png)
+![График PHP 7.4 всё вместе от 10 до 50000 товаров](/php-array_merge/PHP_7.4_10_50000.png)
 `array_merge` и `array_replace` в рамках теста, смог замерить только для 10000 товаров. Разница существенна, на порядки.
 
 ### А что с памятью?
-![График PHP 7.4 память](/static/php-array_merge/PHP_7.4_memory.png)
+![График PHP 7.4 память](/php-array_merge/PHP_7.4_memory.png)
 С памятью всё ок, все подходы практически одинаково используют память.
 
 ### Самый быстрый подход
-![PHP 7.4 сравнение быстрых подходов](/static/php-array_merge/7.4_compare_fast.png)
+![PHP 7.4 сравнение быстрых подходов](/php-array_merge/7.4_compare_fast.png)
 В данных эксперимента самым быстрым оказался обычный foreach, но разница столь не существенна, что думаю не стоит делать разницы между `...`, `+` и `foreach` .
 
 ## А если без цикла?
@@ -177,9 +177,9 @@ https://gist.github.com/zualex/4e770098f40f2f101138dda7251f32ca
 
 ### Анализ данных без циклов
 #### Скрость
-![График PHP 7.4 без цикла скорость](/static/php-array_merge/PHP_7.4_Without_loop_Speed.png)
+![График PHP 7.4 без цикла скорость](/php-array_merge/PHP_7.4_Without_loop_Speed.png)
 #### Память
-![График PHP 7.4 без цикла память (KB)](/static/php-array_merge/PHP_7.4_Without_loop_Memory.png)
+![График PHP 7.4 без цикла память (KB)](/php-array_merge/PHP_7.4_Without_loop_Memory.png)
 
 Как видно, `array_merge` быстрее всех справляется с объединением больших массивов без использования циклов. По памяти Чуть экномичнее `foreach` и `array_replace`
 
