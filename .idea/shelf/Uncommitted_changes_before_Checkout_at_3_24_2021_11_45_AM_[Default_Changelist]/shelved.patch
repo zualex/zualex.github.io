@@ -1,0 +1,51 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"25e6ca91-c022-4047-a108-5a5f990a6c85\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"ROOT_SYNC\" value=\"DONT_SYNC\" />\r\n  </component>\r\n  <component name=\"ProjectFrameBounds\" extendedState=\"6\">\r\n    <option name=\"x\" value=\"-8\" />\r\n    <option name=\"y\" value=\"-8\" />\r\n    <option name=\"width\" value=\"1936\" />\r\n    <option name=\"height\" value=\"1096\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1hAl5YPq62nKdXQs3OQq3D2U1Ya\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"nodejs_interpreter_path.stuck_in_default_project\" value=\"undefined stuck path\" />\r\n    <property name=\"nodejs_npm_path_reset_for_default_project\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\ASUS\\Code\\zualex.github.io\\content\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"25e6ca91-c022-4047-a108-5a5f990a6c85\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1571923216803</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1571923216803</updated>\r\n      <workItem from=\"1571923219160\" duration=\"9088000\" />\r\n      <workItem from=\"1572693201499\" duration=\"239000\" />\r\n      <workItem from=\"1577089125755\" duration=\"1147000\" />\r\n      <workItem from=\"1599461596498\" duration=\"1746000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"New post\">\r\n      <created>1599462963340</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1599462963340</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TodoView\">\r\n    <todo-panel id=\"selected-file\">\r\n      <is-autoscroll-to-source value=\"true\" />\r\n    </todo-panel>\r\n    <todo-panel id=\"all\">\r\n      <are-packages-shown value=\"true\" />\r\n      <is-autoscroll-to-source value=\"true\" />\r\n    </todo-panel>\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"2\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"New post\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"New post\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"770\" y=\"139\" key=\"RollbackChangesDialog\" timestamp=\"1599461668022\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"770\" y=\"139\" key=\"RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1599461668022\" />\r\n    <state x=\"668\" y=\"237\" width=\"583\" height=\"566\" key=\"find.popup\" timestamp=\"1599461733087\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"668\" y=\"237\" width=\"583\" height=\"566\" key=\"find.popup/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1599461733087\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 0267834d5dd25e866df2e39d906ed0c1140a8df9)
++++ .idea/workspace.xml	(date 1599465196051)
+@@ -68,7 +68,7 @@
+       <workItem from="1571923219160" duration="9088000" />
+       <workItem from="1572693201499" duration="239000" />
+       <workItem from="1577089125755" duration="1147000" />
+-      <workItem from="1599461596498" duration="1746000" />
++      <workItem from="1599461596498" duration="2850000" />
+     </task>
+     <task id="LOCAL-00001" summary="New post">
+       <created>1599462963340</created>
+@@ -77,7 +77,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1599462963340</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Change README.md">
++      <created>1599463522374</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1599463522374</updated>
++    </task>
++    <task id="LOCAL-00003" summary="Change README.md">
++      <created>1599463587343</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1599463587343</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TodoView">
+@@ -105,7 +119,8 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="New post" />
+-    <option name="LAST_COMMIT_MESSAGE" value="New post" />
++    <MESSAGE value="Change README.md" />
++    <option name="LAST_COMMIT_MESSAGE" value="Change README.md" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="770" y="139" key="RollbackChangesDialog" timestamp="1599461668022">

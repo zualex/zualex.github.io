@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on Aleksandr Zubarev</title>
+    <link>http://zualex.com/tags/php/</link>
+    <description>Recent content in php on Aleksandr Zubarev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 24 Mar 2021 11:47:29 +0300</lastBuildDate><atom:link href="http://zualex.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHP производительность array_merge в цикле</title>
+      <link>http://zualex.com/posts/php-array_merge-performance-in-a-loop/</link>
+      <pubDate>Wed, 24 Mar 2021 11:47:29 +0300</pubDate>
+      
+      <guid>http://zualex.com/posts/php-array_merge-performance-in-a-loop/</guid>
+      <description>Если использовать array_merge в цикле, то phpStrom + плагин Php Inspections (EA Extended) даёт подсказку: [EA] &#39;array_merge(...)&#39; is used in a loop and is a resources greedy construction. Стало интересно, насколько сильно влияет на произовдительность использование array_merge в цикле и какие есть альтернативные решения.
+Рассмотрим пример. Имеется список товаров следующей структуры:
+$products = [ [&#39;id&#39; =&amp;gt; 1, &#39;tags&#39; =&amp;gt; [&#39;tag_1&#39;, &#39;tag_2&#39;, &#39;tag_3&#39;]], [&#39;id&#39; =&amp;gt; 2, &#39;tags&#39; =&amp;gt; [&#39;tag_1&#39;, &#39;tag_2&#39;, &#39;tag_3&#39;]], ]; Нужно получить список всех тегов.</description>
+    </item>
+    
+  </channel>
+</rss>
