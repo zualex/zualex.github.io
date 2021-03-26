@@ -13,8 +13,8 @@ tags:
 Рассмотрим пример. Имеется список товаров следующей структуры:
 ```
 $products = [
-	['id' => 1, 'tags' => ['tag_1', 'tag_2', 'tag_3']],
-	['id' => 2, 'tags' => ['tag_1', 'tag_2', 'tag_3']],
+    ['id' => 1, 'tags' => ['tag_1', 'tag_2', 'tag_3']],
+    ['id' => 2, 'tags' => ['tag_1', 'tag_2', 'tag_3']],
 ];
 ```
 
@@ -39,7 +39,7 @@ foreach($products as $product) {
     $tags = array_merge($tags, $product['tags']);
 }
 ```
-https://3v4l.org/gRJQi
+https://gist.github.com/zualex/39b3dfe9503b69468307f420089d0c42
 
 #### Распаковка массива через оператор ...
 ```
@@ -49,15 +49,15 @@ foreach($products as $product) {
 }
 $tags = array_merge(...$tags);
 ```
-https://3v4l.org/DvAEF
+https://gist.github.com/zualex/c1bd85a1c2fee5b4c362953211d976ea
 
 #### Использование оператора +
 При использовании оператора + если совпадают индексы, то в результирующем массиве будут только элементы из массива слева от оператора. Чтобы этого избежать потребуется переделать структуру хранения товаров, чтобы в списке тегов был уникальный индекс.
 
 ```
 $products = [
-	['id' => 1, 'tags' => ['tag_1' => tag_1', 'tag_2' => 'tag_2', 'tag_3' => 'tag_3']],
-	['id' => 2, 'tags' => ['tag_1' => tag_1', 'tag_2' => 'tag_2', 'tag_3' => 'tag_3']],
+    ['id' => 1, 'tags' => ['tag_1' => tag_1', 'tag_2' => 'tag_2', 'tag_3' => 'tag_3']],
+    ['id' => 2, 'tags' => ['tag_1' => tag_1', 'tag_2' => 'tag_2', 'tag_3' => 'tag_3']],
 ];
 
 $tags = [];
@@ -65,7 +65,7 @@ foreach($products as $product) {
     $tags += $product['tags'];
 }
 ```
-https://3v4l.org/JUGjB
+https://gist.github.com/zualex/902a6f9e9d1f23a7da7cdd3bebf72812
 
 #### Использование array_replace
 В данном примере тоже потребуется использовать структуру хранения товаров, как при использовании оператора +.
@@ -76,18 +76,18 @@ foreach($products as $product) {
     $tags = array_replace($tags, $product['tags']);
 }
 ```
-https://3v4l.org/FgcBl
+https://gist.github.com/zualex/b656a5f12992f96edaacf1bb22cd0bf7
 
 #### Использование foreach
 ```
 $tags = [];
 foreach($products as $product) {
-	foreach($product['tags'] as $tag) {
-		$tags[] = $tag;
-	}
+    foreach($product['tags'] as $tag) {
+        $tags[] = $tag;
+    }
 }
 ```
-https://3v4l.org/9NADo
+https://gist.github.com/zualex/0d101fb8b48701352117cfc253be2762
 
 ## Анализ производительности
 Результаты прогонов в этой таблице: https://docs.google.com/spreadsheets/d/1Va7pg5iaPbXMxkbcQ5sOTco0d316IUzLCOcHq1CrzRo/edit?usp=sharing
@@ -140,25 +140,25 @@ $big3 = range(200000, 100000);
 ```
 $result = array_merge($big1, $big2, $big3);
 ```
-https://3v4l.org/grFZ5
+https://gist.github.com/zualex/a9f536006c1a24f7c4d4888077dc9fc0
 
 #### Без цикла Распаковка массива через оператор ...
 ```
 $result = [...$big1, ...$big2, ...$big3];
 ```
-https://3v4l.org/ZoTUF
+https://gist.github.com/zualex/a35cd71c38480658a1bbaf6559c4c2fe
 
 #### Без цикла оператор +
 ```
 $result = $big1 + $big2 + $big3;
 ```
-https://3v4l.org/jK4Pk
+https://gist.github.com/zualex/6e6d9d584cc979b59da517f9078e6559
 
 #### Без цикла array_replace
 ```
 $result = array_replace($big1, $big2, $big3);
 ```
-https://3v4l.org/UIjh9
+https://gist.github.com/zualex/4e770098f40f2f101138dda7251f32ca
 
 #### Без цикла foreach
 ```
@@ -173,11 +173,11 @@ foreach ($big3 as $key => $value) {
     $result[$key] = $value;
 }
 ```
-https://3v4l.org/bWGUK
+https://gist.github.com/zualex/4e770098f40f2f101138dda7251f32ca
 
 ### Анализ данных без циклов
 #### Скрость
-![График PHP 7.4 без цикла скорость](/static/php-array_merge/PHP_7.4_Without_loop_Speed)
+![График PHP 7.4 без цикла скорость](/static/php-array_merge/PHP_7.4_Without_loop_Speed.png)
 #### Память
 ![График PHP 7.4 без цикла память (KB)](/static/php-array_merge/PHP_7.4_Without_loop_Memory.png)
 
