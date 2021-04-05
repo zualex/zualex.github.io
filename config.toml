@@ -1,4 +1,4 @@
-baseURL = "http://zualex.com/"
+baseURL = "https://zualex.com/"
 publishDir = "public"
 languageCode = "en-us"
 defaultContentLanguage = "en"
