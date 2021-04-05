@@ -33,7 +33,7 @@ googleAnalytics = "UA-154967287-1"
   dateformNumTime = "2006-01-02 15:04 -0700"
 
   # Metadata mostly used in document's head
-  # description = ""
+  description = "Aleksandr Zubarev - Senior Software Engineer PHP"
   # images = [""]
   themeColor = "#494f5c"
 
