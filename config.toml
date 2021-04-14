@@ -27,6 +27,8 @@ googleAnalytics = "UA-154967287-1"
   # Categories are disabled by default.
 
 [params]
+  yandexAnalytics = "75253855"
+
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
