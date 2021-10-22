@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Aleksandr Zubarev</title><link>https://zualex.com/posts/</link><description>Recent content in Posts on Aleksandr Zubarev</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 27 Apr 2021 14:14:23 +0300</lastBuildDate><atom:link href="https://zualex.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Copy-on-write в PHP</title><link>https://zualex.com/posts/copy-on-write-php/</link><pubDate>Tue, 27 Apr 2021 14:14:23 +0300</pubDate><guid>https://zualex.com/posts/copy-on-write-php/</guid><description>Copy-on-write или копирование при записи — один из способов управлением памятью. Но перед тем как давать какие-то определения, предлагаю рассмотреть пример:
 function handle(array $array) { $result = []; // ... return $result; } $largeArray = getLargeArray(); handle($largeArray); В данном примере есть функция handle. В эту функцию передаётся массив большого размера. По умолчанию в PHP передача аргументов происходит по значению. Это означает, что если изменить значение аргумента внутри функции, то вне функции значение всё равно останется прежним.</description><content type="html"><![CDATA[<p>Copy-on-write или копирование при записи — один из способов управлением памятью. Но перед тем как давать какие-то определения, предлагаю рассмотреть пример:</p>
-<pre><code>function handle(array $array) {
+<pre tabindex="0"><code>function handle(array $array) {
     $result = [];
     // ...
     return $result;
@@ -13,7 +13,7 @@ handle($largeArray);
 <p>На самом деле ответ зависит от того, что происходит внутри функции handle.</p>
 <h2 id="чтение-аргумента">Чтение аргумента</h2>
 <p>Представим, что функция handle только читает значения из $array.</p>
-<pre><code>function handle(array $array) {
+<pre tabindex="0"><code>function handle(array $array) {
     $result = [];
     foreach($array as $row) {
         $result[] = $row['id'];
@@ -23,7 +23,7 @@ handle($largeArray);
 }
 </code></pre><p>В данном случае внутри функции handle не произойдет копирования переменной $array. Переменные $array и $largeArray ссылаются на одну и ту же запись zval.</p>
 <p>zval - если упрощенно, то это контейнер, в котором хранится переменная.</p>
-<pre><code>$value = 'string'; // создается контейнер zval_1
+<pre tabindex="0"><code>$value = 'string'; // создается контейнер zval_1
 $copyValue = $value; // используется контейнер zval_1
 
 $value = 'new string'; // создается контейнер zval_2
@@ -33,7 +33,7 @@ unset($copyValue); // удаляется zval_1
 </code></pre><p>При создании новой переменной $value создается новый контейнер zval, для простоты обозначим, как zval_1. На следующей строке переменной $copyValue присваивается значение $value. Интуитивно может показаться, что в этот момент будет выделена память, но на самом деле $copyValue только лишь ссылается (не путать со ссылками PHP, которые начинаются со знака &amp;) на тот же zval контейнер, что и $value. Новый контейнер будет создан только в том случае, если переменную $value или $copyValue изменить.</p>
 <h2 id="модификация-аргумента">Модификация аргумента</h2>
 <p>Теперь рассмотрим ситуацию, когда в функции handle переменная $array модифицируется.</p>
-<pre><code>function handle(array $array) {
+<pre tabindex="0"><code>function handle(array $array) {
     unset($array[0]);
 
     return $array;
@@ -43,7 +43,7 @@ unset($copyValue); // удаляется zval_1
 <p>Суть подхода сopy-on-write или копирование при изменении заключается в том, что при чтении переменных используется общая копия, в случае изменения переменной — создается новая копия.</p>
 <h2 id="замеры-памяти">Замеры памяти</h2>
 <p>Проведём тест, попробуем увидеть, что при чтении аргумента используется общая копия, а при модификации выделяется память.</p>
-<pre><code>&lt;?php
+<pre tabindex="0"><code>&lt;?php
 
 function printMemory(string $header) {
     $memoryPeak = memory_get_peak_usage();
@@ -79,7 +79,7 @@ printMemory('handleRead');
 handleWrite($largeArray);
 printMemory('handleWrite');
 </code></pre><p>Результат для PHP 7.4 - 8.0:</p>
-<pre><code>create $largeArray
+<pre tabindex="0"><code>create $largeArray
 Peak usage: 16764KB of memory
 
 handleRead
@@ -90,7 +90,7 @@ Peak usage: 33153KB of memory
 </code></pre><p>Из результата видно, что при изменении аргумента, была выделена память, а при чтении нет.</p>
 <h2 id="передача-объекта-в-качестве-аргумента">Передача объекта в качестве аргумента</h2>
 <p>Стоит рассмотреть случай передачи объекта в качестве аргумента. И посмотреть, применяется ли для данного случая механизм copy-on-write. Рассмотрим следующий пример:</p>
-<pre><code>function printMemory(string $header) {
+<pre tabindex="0"><code>function printMemory(string $header) {
     $memoryPeak = memory_get_peak_usage();
     
     echo $header . PHP_EOL;
@@ -110,7 +110,7 @@ handle($object);
 
 echo 'After: ' . count($object-&gt;list) . PHP_EOL;
 </code></pre><p>Результат:</p>
-<pre><code>Before: 500001
+<pre tabindex="0"><code>Before: 500001
 Memory before handle
 Peak usage: 16764KB of memory 
 
@@ -133,7 +133,7 @@ Peak usage: 16765KB of memory
 Рассмотрим пример. Имеется список товаров следующей структуры:
 $products = [ ['id' =&amp;gt; 1, 'tags' =&amp;gt; ['tag_1', 'tag_2', 'tag_3']], ['id' =&amp;gt; 2, 'tags' =&amp;gt; ['tag_1', 'tag_2', 'tag_3']], ]; Нужно получить список всех тегов.</description><content type="html"><![CDATA[<p>Если использовать array_merge в цикле, то phpStrom + плагин <a href="https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-">Php Inspections (EA Extended)</a> даёт подсказку: <code>[EA] 'array_merge(...)' is used in a loop and is a resources greedy construction.</code> Стало интересно, насколько  сильно влияет на произовдительность использование array_merge в цикле и какие есть альтернативные решения.</p>
 <p>Рассмотрим пример. Имеется список товаров следующей структуры:</p>
-<pre><code>$products = [
+<pre tabindex="0"><code>$products = [
     ['id' =&gt; 1, 'tags' =&gt; ['tag_1', 'tag_2', 'tag_3']],
     ['id' =&gt; 2, 'tags' =&gt; ['tag_1', 'tag_2', 'tag_3']],
 ];
@@ -150,13 +150,13 @@ $products = [ ['id' =&amp;gt; 1, 'tags' =&amp;gt; ['tag_1', 'tag_2', 'tag_3']], 
 </ul>
 <p>Рассмотрим каждый из способов с примерами кода.</p>
 <h4 id="использование-array_merge">Использование array_merge</h4>
-<pre><code>$tags = [];
+<pre tabindex="0"><code>$tags = [];
 foreach($products as $product) {
     $tags = array_merge($tags, $product['tags']);
 }
 </code></pre><p><a href="https://gist.github.com/zualex/39b3dfe9503b69468307f420089d0c42">https://gist.github.com/zualex/39b3dfe9503b69468307f420089d0c42</a></p>
 <h4 id="распаковка-массива-через-оператор-">Распаковка массива через оператор &hellip;</h4>
-<pre><code>$tags = [];
+<pre tabindex="0"><code>$tags = [];
 foreach($products as $product) {
     $tags[] = $product['tags'];
 }
@@ -164,7 +164,7 @@ $tags = array_merge(...$tags);
 </code></pre><p><a href="https://gist.github.com/zualex/c1bd85a1c2fee5b4c362953211d976ea">https://gist.github.com/zualex/c1bd85a1c2fee5b4c362953211d976ea</a></p>
 <h4 id="использование-оператора-">Использование оператора +</h4>
 <p>При использовании оператора + если совпадают индексы, то в результирующем массиве будут только элементы из массива слева от оператора. Чтобы этого избежать потребуется переделать структуру хранения товаров, чтобы в списке тегов был уникальный индекс.</p>
-<pre><code>$products = [
+<pre tabindex="0"><code>$products = [
     ['id' =&gt; 1, 'tags' =&gt; ['tag_1' =&gt; tag_1', 'tag_2' =&gt; 'tag_2', 'tag_3' =&gt; 'tag_3']],
     ['id' =&gt; 2, 'tags' =&gt; ['tag_1' =&gt; tag_1', 'tag_2' =&gt; 'tag_2', 'tag_3' =&gt; 'tag_3']],
 ];
@@ -176,13 +176,13 @@ foreach($products as $product) {
 </code></pre><p><a href="https://gist.github.com/zualex/902a6f9e9d1f23a7da7cdd3bebf72812">https://gist.github.com/zualex/902a6f9e9d1f23a7da7cdd3bebf72812</a></p>
 <h4 id="использование-array_replace">Использование array_replace</h4>
 <p>В данном примере тоже потребуется использовать структуру хранения товаров, как при использовании оператора +.</p>
-<pre><code>$tags = [];
+<pre tabindex="0"><code>$tags = [];
 foreach($products as $product) {
     $tags = array_replace($tags, $product['tags']);
 }
 </code></pre><p><a href="https://gist.github.com/zualex/b656a5f12992f96edaacf1bb22cd0bf7">https://gist.github.com/zualex/b656a5f12992f96edaacf1bb22cd0bf7</a></p>
 <h4 id="использование-foreach">Использование foreach</h4>
-<pre><code>$tags = [];
+<pre tabindex="0"><code>$tags = [];
 foreach($products as $product) {
     foreach($product['tags'] as $tag) {
         $tags[] = $tag;
@@ -216,23 +216,23 @@ foreach($products as $product) {
 В данных эксперимента самым быстрым оказался обычный foreach, но разница столь не существенна, что думаю не стоит делать разницы между <code>...</code>, <code>+</code> и <code>foreach</code> .</p>
 <h2 id="а-если-без-цикла">А если без цикла?</h2>
 <p>Для полноты картины посмотрим на те же подходы, если без цикла объединить 3 больших массива по 100000 элементов в каждом.</p>
-<pre><code>$big1 = range(0, 100000);
+<pre tabindex="0"><code>$big1 = range(0, 100000);
 $big2 = array_fill(100000, 100000, 'string');
 $big3 = range(200000, 100000);
 </code></pre><h4 id="без-цикла-array_merge">Без цикла array_merge</h4>
-<pre><code>$result = array_merge($big1, $big2, $big3);
+<pre tabindex="0"><code>$result = array_merge($big1, $big2, $big3);
 </code></pre><p><a href="https://gist.github.com/zualex/a9f536006c1a24f7c4d4888077dc9fc0">https://gist.github.com/zualex/a9f536006c1a24f7c4d4888077dc9fc0</a></p>
 <h4 id="без-цикла-распаковка-массива-через-оператор-">Без цикла Распаковка массива через оператор &hellip;</h4>
-<pre><code>$result = [...$big1, ...$big2, ...$big3];
+<pre tabindex="0"><code>$result = [...$big1, ...$big2, ...$big3];
 </code></pre><p><a href="https://gist.github.com/zualex/a35cd71c38480658a1bbaf6559c4c2fe">https://gist.github.com/zualex/a35cd71c38480658a1bbaf6559c4c2fe</a></p>
 <h4 id="без-цикла-оператор-">Без цикла оператор +</h4>
-<pre><code>$result = $big1 + $big2 + $big3;
+<pre tabindex="0"><code>$result = $big1 + $big2 + $big3;
 </code></pre><p><a href="https://gist.github.com/zualex/6e6d9d584cc979b59da517f9078e6559">https://gist.github.com/zualex/6e6d9d584cc979b59da517f9078e6559</a></p>
 <h4 id="без-цикла-array_replace">Без цикла array_replace</h4>
-<pre><code>$result = array_replace($big1, $big2, $big3);
+<pre tabindex="0"><code>$result = array_replace($big1, $big2, $big3);
 </code></pre><p><a href="https://gist.github.com/zualex/4e770098f40f2f101138dda7251f32ca">https://gist.github.com/zualex/4e770098f40f2f101138dda7251f32ca</a></p>
 <h4 id="без-цикла-foreach">Без цикла foreach</h4>
-<pre><code>$result = [];
+<pre tabindex="0"><code>$result = [];
 foreach ($big1 as $key =&gt; $value) {
     $result[$key] = $value;
 }
@@ -334,7 +334,7 @@ foreach ($big3 as $key =&gt; $value) {
 <p>На всё это требовалось много времени, примерно по 4 часа в день выделял на подготовку. Чем ближе к собеседованию, тем больше понимал, что как много я не знаю. Но в последние два дня решил себя не мучить и дать голове отдохнуть и переварить всю полученную информацию.</p>
 <h2 id="собеседование">Собеседование</h2>
 <p>В Московском офисе меня ждало 4 секции, то есть 4 собеседования с 12:00 и до 18:00:</p>
-<pre><code>13:00 - 14:00 – Первая секция с написанием кода 
+<pre tabindex="0"><code>13:00 - 14:00 – Первая секция с написанием кода 
 14:00 - 15:00 – Вторая секция с написанием кода 
 15:00 - 16:00 - Обед с hr
 16:00 - 17:00 - Менеджерская секция
